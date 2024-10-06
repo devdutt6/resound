@@ -1,11 +1,13 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import Player from './_components/player';
 import Settings from './_components/settings';
 import { useDashboard } from './_hooks/use-dashboard';
 
 export default function Page() {
-  const { settingActive, toggleSetting, websiteOptions } = useDashboard();
+  const { settingActive, toggleSetting, websiteOptions, track } =
+    useDashboard();
 
   return (
     <main className='flex flex-col items-center'>
@@ -50,66 +52,20 @@ export default function Page() {
       {/* Settings modal */}
       {settingActive && <Settings websiteOptions={websiteOptions} />}
       {/* music player */}
-      <div
-        className={cn(
-          'flex justify-center items-center lg:w-[1100px]',
-          !settingActive ? 'h-screen' : 'mt-4'
-        )}
-      >
-        <div
-          className={cn(
-            'flex justify-between gap-2 rounded-full p-6',
-            !settingActive && 'h-[224px] bg-slate-200'
-          )}
-        >
-          <img
-            src={
-              websiteOptions?.appStatus.licensee.logo.player_image &&
-              'https://api.yourharmony.ai/images/user-image.png' // TODO remove the fallback
-            }
-            className={cn(
-              'rounded-full object-cover hidden',
-              !settingActive && 'block'
-            )}
-          />
-          <div
-            className={cn(
-              'flex-1 flex flex-col gap-4 px-4',
-              settingActive && 'w-[664px]'
-            )}
-          >
-            <p className='text-sm text-zinc-300 uppercase font-semibold'>
-              {websiteOptions?.appStatus.licensee.firm}
-            </p>
-            <div className='flex justify-between items-center'>
-              <div className='flex-1'>
-                <p
-                  className={cn(
-                    'text-3xl tracking-tight flex-1',
-                    settingActive && 'text-lg font-semibold'
-                  )}
-                >
-                  {websiteOptions?.appStatus.licensee.name?.split(' ')?.at(0) ||
-                    ''}
-                </p>
-                <p
-                  className={cn(
-                    'tracking-tight text-gray-400',
-                    settingActive && 'hidden'
-                  )}
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Debitis nisi sit necessitatibus facilis nobis obcaecati, culpa
-                </p>
-              </div>
-              <p className='tracking-tight'>
-                Player controls asjdkaks adasnjd aksdaiud
-              </p>
-            </div>
-            <div className='border-2 border-gray-400'></div>
-          </div>
+      {track ? (
+        <Player
+          musicLink={track.link}
+          firm={track.artist}
+          description={track.description}
+          licenseeName={track.title}
+          musicLogo={track.image}
+          settingActive={settingActive}
+        />
+      ) : (
+        <div className='flex flex-1 justify-center items-center h-screen'>
+          No Tracks has been assigned yet, please wait till one gets assigned
         </div>
-      </div>
+      )}
     </main>
   );
 }

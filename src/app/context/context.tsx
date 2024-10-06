@@ -8,6 +8,17 @@ export interface WebsiteContext {
   websiteDetails: WebsiteDetails;
 }
 
+export type TrackResponse = { data: Tracks[] };
+
+export interface Tracks {
+  artist: string;
+  description: string;
+  id: string;
+  image: string;
+  link: string;
+  title: string;
+}
+
 export interface BannerSection {
   image: string;
   title: string;
