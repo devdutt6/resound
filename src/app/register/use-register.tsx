@@ -56,6 +56,7 @@ export const useRegister = () => {
       })
       .catch((err) => {
         // TODO error
+        console.log(err);
       });
   }, []);
 
@@ -84,7 +85,7 @@ export const useRegister = () => {
     };
     Put<RegisterResponse>('/register', obj)
       .then((data) => {
-        console.log('register');
+        console.log('register', data);
         toast({ title: 'Registered Successfully', variant: 'successive' });
         // TODO success
       })
@@ -98,7 +99,11 @@ export const useRegister = () => {
       });
   }
   async function nextStep() {
-    let result = await form.trigger(['fullName', 'dateOfBirth', 'phoneNumber']);
+    const result = await form.trigger([
+      'fullName',
+      'dateOfBirth',
+      'phoneNumber',
+    ]);
     if (result) setStep(2);
   }
 

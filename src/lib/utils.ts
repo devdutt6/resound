@@ -11,7 +11,7 @@ export async function Call<T>(
   override: boolean = false
 ): Promise<T> {
   const response = await fetch((override ? BASE_POST : BASE) + url, {
-    method: 'post',
+    method: 'POST',
     headers: {
       origin: Origin,
       Authorization: `Bearer ${localStorage.getItem('bearer')}`,
@@ -37,7 +37,7 @@ export async function Call<T>(
 export async function Put<T>(
   url: string,
   body: any,
-  method: 'post' | 'put' | 'patch' = 'post'
+  method: 'POST' | 'PUT' | 'PATCH' = 'POST'
 ): Promise<T> {
   const response = await fetch(BASE_POST + url, {
     method,
@@ -46,8 +46,9 @@ export async function Put<T>(
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('bearer')}`,
       'Content-Type': 'application/json',
+      'Api-Key': '97b42543-44d7-40c0-9905-64c14783f3a2',
     },
-    body: JSON.stringify(body) as any,
+    body: JSON.stringify(body) as string,
   });
 
   if (response.ok) {

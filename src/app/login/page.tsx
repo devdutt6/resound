@@ -71,7 +71,7 @@ export default function Page() {
               Sign in
             </Button>
             <p className='text-center text-md font-semibold tracking-tight'>
-              Don't have an account?
+              Don&apos;t have an account?
             </p>
             <p className='text-center text-md -translate-y-1 font-semibold tracking-tight'>
               Click here to{' '}

@@ -20,7 +20,7 @@ export const useStripeCardCompose = () => {
 
     const paymentMethodId = payload?.paymentMethod?.id;
 
-    Put<any>('/add-new-card', { payment_method_id: paymentMethodId }, 'post')
+    Put<any>('/add-new-card', { payment_method_id: paymentMethodId }, 'POST')
       .then((data) => {
         console.log('add card');
         toast({

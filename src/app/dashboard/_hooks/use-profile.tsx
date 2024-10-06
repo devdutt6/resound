@@ -16,7 +16,7 @@ const profileFormSchema = z
     countryCode: z.string(),
     dateOfBirth: z.string(),
   })
-  .superRefine(({ dateOfBirth }, ctx) => {
+  .superRefine(({ dateOfBirth }) => {
     console.log(dateOfBirth);
     // if (!dateOfBirth) {
     //   ctx.addIssue({
@@ -72,7 +72,7 @@ export const useProfile = ({
       country_code: '+91',
       country_iso_code: 'IN',
     };
-    Put<UpdateProfileRequest>('/profile/update-details', obj, 'patch')
+    Put<{ meta: { message: string } }>('/profile/update-details', obj, 'PATCH')
       .then((data) => {
         console.log('update details');
         toast({

@@ -33,13 +33,13 @@ export const useConfirmPassword = () => {
 
   function onSubmit(values: z.infer<typeof confirmPasswordSchema>) {
     console.log(values);
-    Put(
+    Put<{ meta: { message: string } }>(
       '/profile/change-password',
       {
         current_password: values.currentPassword,
         password: values.password,
       },
-      'patch'
+      'PATCH'
     )
       .then((data) => {
         console.log('change password');
