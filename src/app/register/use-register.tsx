@@ -16,7 +16,8 @@ const registerSchema = z
     email: z.string().email().min(1, 'Email is a required field'),
     password: z.string().min(1, 'Password is a required field'),
     confirmPassword: z.string().min(1, 'Please confirm the password'),
-    fullName: z.string().min(1, 'Name is a required field'),
+    firstName: z.string().min(1, 'First name is a required'),
+    lastName: z.string().min(1, 'Last Name is a required'),
     phoneNumber: z.string().min(1, 'Phone number is a required field'),
     dateOfBirth: z.string().min(1, 'Please specify your birth date'),
   })
@@ -40,7 +41,8 @@ export const useRegister = () => {
       email: '',
       password: '',
       confirmPassword: '',
-      fullName: '',
+      firstName: '',
+      lastName: '',
       phoneNumber: '',
       dateOfBirth: format(
         new Date(new Date().getTime() - 18 * 365 * 24 * 3600000),
@@ -50,9 +52,9 @@ export const useRegister = () => {
   });
 
   useEffect(() => {
-    Call<AppStatus>('/app-status')
+    Call<{ data: AppStatus; meta: { message: string } }>('/app-status')
       .then((data) => {
-        setLogo(data?.licensee.logo.licensee);
+        setLogo(data?.data?.licensee.logo.licensee);
       })
       .catch((err) => {
         // TODO error
@@ -64,18 +66,16 @@ export const useRegister = () => {
     setStep(1);
   }, [
     form.formState.errors.dateOfBirth,
-    form.formState.errors.fullName,
     form.formState.errors.phoneNumber,
+    form.formState.errors.firstName,
+    form.formState.errors.lastName,
   ]);
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
     console.log(values);
     const obj: RegisterRequest = {
-      first_name: values.fullName.split(' ')?.at(0) ?? values.fullName,
-      last_name:
-        values.fullName.split(' ')?.at(1) ??
-        values.fullName.split(' ')?.at(0) ??
-        values.fullName,
+      first_name: values.firstName,
+      last_name: values.lastName,
       contact: values.phoneNumber,
       email: values.email,
       birthday: values.dateOfBirth,
@@ -100,7 +100,8 @@ export const useRegister = () => {
   }
   async function nextStep() {
     const result = await form.trigger([
-      'fullName',
+      'firstName',
+      'lastName',
       'dateOfBirth',
       'phoneNumber',
     ]);

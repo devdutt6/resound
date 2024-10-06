@@ -11,7 +11,7 @@ export async function Call<T>(
   override: boolean = false
 ): Promise<T> {
   const response = await fetch((override ? BASE_POST : BASE) + url, {
-    method: 'POST',
+    method: 'get',
     headers: {
       origin: Origin,
       Authorization: `Bearer ${localStorage.getItem('bearer')}`,

@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -33,26 +32,45 @@ export default function Page() {
             </p>
             {step === 1 && (
               <>
-                <FormField
-                  control={form.control}
-                  name='fullName'
-                  render={({ field }) => (
-                    <FormItem className='mb-4'>
-                      <FormLabel className='text-gray-500'>Full Name</FormLabel>
-                      <FormControl>
-                        <Input className='bg-white' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className='flex justify-between gap-2'>
+                  <FormField
+                    control={form.control}
+                    name='firstName'
+                    render={({ field }) => (
+                      <FormItem className='mb-4 flex-1'>
+                        <FormLabel className='text-gray-500'>
+                          First Name
+                        </FormLabel>
+                        <FormControl>
+                          <Input className='bg-white' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='lastName'
+                    render={({ field }) => (
+                      <FormItem className='mb-4 flex-1'>
+                        <FormLabel className='text-gray-500'>
+                          Last Name
+                        </FormLabel>
+                        <FormControl>
+                          <Input className='bg-white' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <FormField
                   control={form.control}
                   name='phoneNumber'
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className='text-gray-500'>
-                        Phone Number
+                        Contact Number
                       </FormLabel>
                       <FormControl>
                         <Input className='bg-white' {...field} />
@@ -114,7 +132,7 @@ export default function Page() {
                   control={form.control}
                   name='password'
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className='mb-4'>
                       <FormLabel className='text-gray-500'>Password</FormLabel>
                       <FormControl>
                         <Input
@@ -168,20 +186,20 @@ export default function Page() {
               </p>
             )}
             {step === 1 ? (
-              <Button
+              <button
                 type='button'
-                className='py-6 w-full font-semibold text-lg mb-4 bg-[var(--primary-custom)] hover:shadow-md'
+                className='py-2 w-full font-semibold rounded-lg text-[var(--background)] text-lg mb-4 hover:bg-[var(--primary-custom)] bg-[var(--secondary-custom)] hover:shadow-md'
                 onClick={nextStep}
               >
                 Next
-              </Button>
+              </button>
             ) : (
-              <Button
+              <button
+                className='py-2 w-full font-semibold rounded-lg text-[var(--background)] text-lg mb-4 hover:bg-[var(--primary-custom)] bg-[var(--secondary-custom)] hover:shadow-md'
                 type='submit'
-                className='py-6 w-full font-semibold text-lg mb-4 bg-[var(--primary-custom)] hover:shadow-md'
               >
                 Sign up
-              </Button>
+              </button>
             )}
             <p className='text-center text-md font-semibold tracking-tight'>
               Already have an account?
