@@ -23,53 +23,60 @@ export default async function Home() {
   return (
     <div className='flex flex-col'>
       <>
-        <nav className='py-4 flex items-center justify-between sm:justify-between lg:w-[1100px] px-4 mx-auto w-full'>
-          <a href='#' className='block flex-1 shrink-0'>
-            <img
-              src={websiteOptions?.appStatus.licensee.logo.licensee}
-              className='block object-center min-w-[149px] max-w-[150px] cursor-pointer'
-            />
-          </a>
-          <ul className='hidden sm:flex [&>li]:px-4 [&>li]:py-2 items-center justify-between uppercase text-sm font-semibold hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
-            <li className=''>
-              <a href='#about'>About</a>
-            </li>
-            <li className=''>
-              <a href='#services'>Services</a>
-            </li>
-            <li className=''>
-              <a href='#plan'>Plan</a>
-            </li>
-            <li className=''>
-              <a href='#contactUs'>Contact Us</a>
-            </li>
-          </ul>
-          <a
-            className='rounded-full uppercase text-center align-middle font-semibold text-lg hover:border-[var(--primary-custom)] hover:text-[var(--primary-custom)] border-black border-[2px] px-6 py-2'
-            href='/dashboard'
-          >
-            Dashboard
-          </a>
-        </nav>
-        <main className='h-screen flex flex-col gap-4 justify-center items-center relative text-white p-4'>
+        <main className='h-screen flex flex-col items-center relative text-white p-4'>
           <img
             src={websiteOptions?.websiteDetails.banner_section.image}
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 0 }}
             className='w-full h-full object-cover absolute top-0 left-0'
           />
-          <h2 style={{ zIndex: 10 }} className='text-5xl tracking-wide'>
-            {websiteOptions?.websiteDetails.banner_section.title}
-          </h2>
-          <p style={{ zIndex: 10 }} className='text-lg'>
-            {websiteOptions?.websiteDetails.banner_section.description}
-          </p>
-          <a
-            href={websiteOptions?.websiteDetails.banner_section.link}
-            style={{ zIndex: 10 }}
-            className='px-5 py-4 rounded-lg bg-white text-black uppercase hover:text-white hover:bg-[var(--primary-custom)]'
+          <nav
+            style={{ zIndex: 1 }}
+            className='py-4 flex items-center justify-between sm:justify-between lg:w-[1100px] px-4 mx-auto w-full'
           >
-            {websiteOptions?.websiteDetails.banner_section.button}
-          </a>
+            <a href='#' className='block shrink-0'>
+              <img
+                src={websiteOptions?.appStatus.licensee.logo.licensee}
+                className='block object-center min-w-[149px] max-w-[150px] cursor-pointer'
+              />
+            </a>
+            <ul className='hidden sm:flex [&>li]:px-4 [&>li]:py-2 items-center justify-between font-semibold hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
+              <li className=''>
+                <a href='#about'>About</a>
+              </li>
+              <li className=''>
+                <a href='#services'>Services</a>
+              </li>
+              <li className=''>
+                <a href='#plan'>Plan</a>
+              </li>
+              <li className=''>
+                <a href='#contactUs'>Contact Us</a>
+              </li>
+            </ul>
+            <a
+              className='rounded-full uppercase text-center align-middle font-semibold text-lg hover:border-[var(--primary-custom)] hover:text-[var(--primary-custom)] border-[var(--background)] border-[2px] px-6 py-2'
+              href='/dashboard'
+            >
+              Dashboard
+            </a>
+          </nav>
+          <div
+            className='flex flex-col flex-1 justify-center items-center gap-4'
+            style={{ zIndex: 10 }}
+          >
+            <h2 className='text-5xl'>
+              {websiteOptions?.websiteDetails.banner_section.title}
+            </h2>
+            <p className='text-lg'>
+              {websiteOptions?.websiteDetails.banner_section.description}
+            </p>
+            <a
+              href={websiteOptions?.websiteDetails.banner_section.link}
+              className='px-5 py-4 rounded-lg bg-white text-black uppercase hover:text-white hover:bg-[var(--primary-custom)]'
+            >
+              {websiteOptions?.websiteDetails.banner_section.button}
+            </a>
+          </div>
         </main>
         <section
           className='flex flex-col justify-center items-center py-28 gap-4'
@@ -119,8 +126,8 @@ export default async function Home() {
           <div className='border-2 border-zinc-300 rounded-lg flex flex-col gap-4 p-5 w-80'>
             <p className='text-xl text-black font-semibold'>Super Save</p>
             <p className='text-4xl text-black'>
-              <span className='text-zinc-300'>A$</span>4.5/
-              <span className='text-2xl'>month</span>
+              <span className='text-zinc-300 mr-1'>$</span>4.5/
+              <span className='text-xl'>month</span>
             </p>
             <ul className='flex flex-col gap-4'>
               <li className='tracking-wider font-semibold'>It includes:</li>
@@ -131,7 +138,10 @@ export default async function Home() {
                 </li>
               ))}
             </ul>
-            <button className='px-4 py-4 mt-5 rounded-lg text-white hover:bg-[var(--secondary-custom)] bg-[var(--primary-custom)] tracking-wide font-semibold'>
+            <button
+              onClick={() => (window.location.href = '/getting-started')}
+              className='px-4 py-4 mt-5 rounded-lg text-white hover:bg-[var(--secondary-custom)] bg-[var(--primary-custom)] tracking-wide font-semibold'
+            >
               Current Plan
             </button>
           </div>
@@ -146,14 +156,22 @@ export default async function Home() {
             </p>
             <a
               href={websiteOptions?.websiteDetails.footer.link}
-              className='text-lg uppercase font-semibold px-4 py-3 text-[var(--primary-custom)] bg-white rounded-lg hover:text-white hover:bg-[var(--primary-custom)] max-w-40 sm:max-w-none'
+              className='text-lg font-semibold px-4 py-3 text-[var(--primary-custom)] bg-white rounded-lg hover:text-white hover:bg-[var(--primary-custom)] max-w-40 sm:max-w-none'
             >
               {websiteOptions?.websiteDetails.footer.button}
             </a>
           </div>
         </section>
-        <footer className='flex justify-center items-center border-t-2 border-zinc-400 py-6'>
-          <ul className='flex flex-col md:flex-row text-zinc-300 [&>li]:px-4 [&>li]:py-2 items-center justify-between uppercase text-lg hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
+        <div className='flex justify-center pb-12'>
+          <a href='#' className='block shrink-0'>
+            <img
+              src={websiteOptions?.appStatus.licensee.logo.licensee}
+              className='block object-center min-w-[250px] max-w-[250px] cursor-pointer'
+            />
+          </a>
+        </div>
+        <footer className='flex justify-center items-center border-t-2 border-zinc-400 py-6 px-2'>
+          <ul className='flex flex-col md:flex-row text-zinc-300 [&>li]:px-4 [&>li]:py-2 items-center justify-between font-semibold text-lg hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
             <li className=''>
               <a href='#about'>About</a>
             </li>
@@ -170,7 +188,7 @@ export default async function Home() {
           <div className='text-sm text-gray-500 flex-1 text-center'>
             {websiteOptions?.websiteDetails.other.copy_right}
           </div>
-          <div className='font-bold text-lg flex-1 text-center'>
+          <div className='font-bold text-lg flex-1 text-right'>
             {websiteOptions?.websiteDetails.other.powered_by}
           </div>
         </footer>
@@ -183,10 +201,11 @@ const Card = ({ service }: { service: Service }) => {
   return (
     <div className='col-span-1 flex flex-col gap-4 px-4 group'>
       <img
-        className='block h-28 bg-[var(--primary-custom)] rounded-lg object-cover object-center'
+        className='block h-12 w-12 rounded-lg object-cover object-center'
+        // bg-[var(--primary-custom)]
         src={service.image}
       />
-      <p className='uppercase text-2xl group-hover:text-[var(--primary-custom)]'>
+      <p className='text-2xl font-bold group-hover:text-[var(--primary-custom)]'>
         {service.title}
       </p>
       <p className='text-lg text-zinc-500'>{service.description}</p>
