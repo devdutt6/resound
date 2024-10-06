@@ -70,12 +70,12 @@ export const ConfirmPassword = () => {
             </FormItem>
           )}
         />
-        <Button
+        <button
+          className='py-2 w-full font-semibold rounded-lg text-[var(--background)] text-lg mb-4 hover:bg-[var(--primary-custom)] bg-[var(--secondary-custom)] hover:shadow-md mt-4'
           type='submit'
-          className='w-full text-lg py-4 font-semibold my-4 bg-[var(--primary-custom)] hover:bg-[var(--secondary-custom)]'
         >
           Save
-        </Button>
+        </button>
         <Button
           type='reset'
           className='w-full text-lg py-4 font-semibold bg-transparent border-black text-black border-2 hover:bg-transparent'

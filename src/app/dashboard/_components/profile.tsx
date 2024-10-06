@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -90,12 +89,12 @@ export const Profile = (props: {
               );
             }}
           />
-          <Button
+          <button
+            className='py-2 w-full font-semibold rounded-lg text-[var(--background)] text-lg mb-4 hover:bg-[var(--primary-custom)] bg-[var(--secondary-custom)] hover:shadow-md'
             type='submit'
-            className='w-full py-6 font-semibold mb-4 text-lg bg-[var(--primary-custom)] hover:bg-[var(--secondary-custom)]'
           >
             Save
-          </Button>
+          </button>
         </div>
         <div className='flex-1'>
           <FormField

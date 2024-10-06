@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { LucideSettings, X } from 'lucide-react';
 import Settings from './_components/settings';
 import { useDashboard } from './_hooks/use-dashboard';
 
@@ -11,24 +10,42 @@ export default function Page() {
   return (
     <main className='flex flex-col items-center'>
       <nav className='py-4 flex items-center lg:w-[1100px] px-4 mx-auto w-full'>
-        {/* <ul className='flex [&>li]:px-4 [&>li]:py-2 items-center justify-between uppercase text-lg font-semibold hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
-          <li className='text-transparent'></li>
-        </ul> */}
+        <div
+          className='flex justify-center items-center flex-col uppercase font-semibold hover:text-[var(--primary-custom)] cursor-pointer'
+          onClick={toggleSetting}
+        >
+          <span
+            className={cn(
+              settingActive ? '' : 'font-bold text-[var(--primary-custom)]'
+            )}
+          >
+            Home
+          </span>
+          {!settingActive && (
+            <p className='border-4 border-black rounded-full'></p>
+          )}
+        </div>
         <a href='/' className='flex justify-center flex-1 shrink-0'>
           <img
             src='https://api.yourharmony.ai/storage/licensees/logos/SC2DLs41zylCEsVjuAUSDPZFzIXF9DmZsCJqgNMZ.png'
             className='block object-center min-w-[149px] max-w-[150px] cursor-pointer'
           />
         </a>
-        <ul className='flex [&>li]:px-4 [&>li]:py-2 items-center justify-between uppercase text-lg font-semibold hover:[&>li]:text-[var(--primary-custom)] [&>li]:cursor-pointer'>
-          <li className='' onClick={toggleSetting}>
-            {!settingActive ? (
-              <LucideSettings className='w-6 h-6' />
-            ) : (
-              <X className='w-6 h-6' />
+        <div
+          className='flex justify-center items-center flex-col uppercase font-semibold hover:text-[var(--primary-custom)] cursor-pointer'
+          onClick={toggleSetting}
+        >
+          <span
+            className={cn(
+              !settingActive ? '' : 'font-bold text-[var(--primary-custom)]'
             )}
-          </li>
-        </ul>
+          >
+            Settings
+          </span>
+          {settingActive && (
+            <p className='border-4 border-black rounded-full'></p>
+          )}
+        </div>
       </nav>
       {/* Settings modal */}
       {settingActive && <Settings websiteOptions={websiteOptions} />}

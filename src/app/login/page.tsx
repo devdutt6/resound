@@ -64,12 +64,12 @@ export default function Page() {
             >
               Forgot Password
             </Button>
-            <Button
+            <button
+              className='py-2 w-full font-semibold rounded-lg text-[var(--background)] text-lg mb-4 hover:bg-[var(--primary-custom)] bg-[var(--secondary-custom)] hover:shadow-md'
               type='submit'
-              className='py-6 w-full font-semibold text-lg mb-4 bg-[var(--primary-custom)] hover:shadow-md'
             >
               Sign in
-            </Button>
+            </button>
             <p className='text-center text-md font-semibold tracking-tight'>
               Don&apos;t have an account?
             </p>
