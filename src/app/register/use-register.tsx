@@ -6,6 +6,7 @@ import {
 import { Call, Put } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -32,6 +33,7 @@ const registerSchema = z
   });
 
 export const useRegister = () => {
+  const router = useRouter();
   const { toast } = useToast();
   const [logo, setLogo] = useState('');
   const [step, setStep] = useState(1);
@@ -87,6 +89,7 @@ export const useRegister = () => {
       .then((data) => {
         console.log('register', data);
         toast({ title: 'Registered Successfully', variant: 'successive' });
+        router.push('/login');
         // TODO success
       })
       .catch((err) => {

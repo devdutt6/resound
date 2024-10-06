@@ -16,8 +16,8 @@ export default function GetStartedPage() {
         <div className='border-2 border-zinc-300 rounded-lg flex flex-col gap-4 p-5 w-80'>
           <p className='text-xl text-black font-semibold'>Super Save</p>
           <p className='text-4xl text-black'>
-            <span className='text-zinc-300'>A$</span>4.5/
-            <span className='text-2xl'>month</span>
+            <span className='text-zinc-300 mr-1'>$</span>4.5/
+            <span className='text-xl'>month</span>
           </p>
           <ul className='flex flex-col gap-4'>
             <li className='tracking-wider font-semibold'>It includes:</li>

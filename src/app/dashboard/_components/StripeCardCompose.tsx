@@ -10,10 +10,27 @@ export const StripeCardCompose = () => {
 
   return (
     <div className='flex flex-col gap-2'>
-      <CardNumberElement id='cardNumber' />
-      <div className='flex gap-2'>
-        <CardExpiryElement />
-        <CardCvcElement />
+      <p className='text-sm mt-6'>Card number</p>
+      <CardNumberElement
+        id='cardNumber'
+        className='pb-2 border-b-2 border-foreground'
+        options={{ placeholder: '0000 0000 0000 0000' }}
+      />
+      <div className='flex gap-4 mb-6'>
+        <div className='text-sm flex-1'>
+          <p>Expiry</p>
+          <CardExpiryElement
+            className='py-2 border-b-2 border-foreground'
+            options={{ placeholder: '02 / 24' }}
+          />
+        </div>
+        <div className='text-sm flex-1'>
+          <p>CVC</p>
+          <CardCvcElement
+            className='py-2 border-b-2 border-foreground'
+            options={{ placeholder: '123' }}
+          />
+        </div>
       </div>
       <button
         onClick={createPaymentMethod}

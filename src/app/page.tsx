@@ -1,11 +1,13 @@
 'use client';
 
 import { Check } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
 import { type Service, WebsiteContext } from './context/context';
 
 export default async function Home() {
   const websiteOptions = useContext(WebsiteContext);
+  const router = useRouter();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -139,7 +141,7 @@ export default async function Home() {
               ))}
             </ul>
             <button
-              onClick={() => (window.location.href = '/getting-started')}
+              onClick={() => router.push('/get-started')}
               className='px-4 py-4 mt-5 rounded-lg text-white hover:bg-[var(--secondary-custom)] bg-[var(--primary-custom)] tracking-wide font-semibold'
             >
               Current Plan
